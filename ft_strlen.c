@@ -6,13 +6,13 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:55:02 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/22 17:10:24 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/05/24 18:46:44 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
