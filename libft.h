@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:38:23 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/24 18:46:44 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/05/24 21:51:33 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ void	*ft_memmove(void *dest, const void *src, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int		ft_atoi(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 20:03:14 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/24 18:47:23 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/05/24 19:07:06 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest_len = ft_strlen(dest);
 	if (size == 0)
 		return (ft_strlen(src));
-	if (size - 1 >= (size_t)ft_strlen(dest))
+	if (size - 1 >= ft_strlen(dest))
 	{
 		while (dest[i])
 			i++;
@@ -37,7 +37,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (dest_len + ft_strlen(src));
 	}
 	else
-		return ((size_t)ft_strlen(src) + size);
+		return (ft_strlen(src) + size);
 	return (0);
 }
 
