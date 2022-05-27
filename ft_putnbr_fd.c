@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 12:55:11 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/27 15:56:39 by tzi-qi           ###   ########.fr       */
+/*   Created: 2022/05/27 14:37:48 by tzi-qi            #+#    #+#             */
+/*   Updated: 2022/05/27 14:41:37 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		x;
-	char	*join;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	x = ft_strlen(s1) + ft_strlen(s2) + 1;
-	join = malloc(x * sizeof(char));
-	if (!join)
-		return (NULL);
-	ft_strlcpy(join, s1, ft_strlen(s1) + 1);
-	ft_strlcat(join + ft_strlen(s1), s2, ft_strlen(s2) + 1);
-	return (join);
+	if (n == -2147483648)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		ft_putnbr_fd(147483648, fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(n + 48, fd);
+	}
 }

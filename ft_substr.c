@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:55:47 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/25 22:41:58 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/05/27 13:12:45 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		i;
 
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	if ((size_t)start > ft_strlen(s))
 		len = 0;
 	if (len < ft_strlen(s))
