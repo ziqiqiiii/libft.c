@@ -7,14 +7,15 @@ OBJ = $(SRCS:%.c=%.o)
 
 LIBS = ar -rcs
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
 INCL = -I ./
 
 all: $(OBJ)
 	$(LIBS) $(NAME) $(OBJ)
-%.o: %.c
-	$(CC) -c $< -o $@ $(INCL)
+# %.o: %.c
+# 	$(CC) -c $< -o $@ $(INCL)
 
 clean:
 	rm -rf $(OBJ)

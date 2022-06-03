@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 17:18:07 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/27 14:10:18 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/02 16:24:11 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	unsigned int	i;
-
-	i = 0;
 	if (src < dest)
 	{
 		while (len--)

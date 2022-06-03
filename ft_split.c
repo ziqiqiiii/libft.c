@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:52:35 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/27 23:00:38 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/03 11:19:36 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_split(char const *s, char c)
 			outcome[i] = malloc(sizeof(char) * (num_char(a, c) + 1));
 			while (*a != '\0' && compare(*a, c) == 1)
 				outcome[i][j++] = *a++;
-			outcome[i++][j] = '\0';
+			outcome[i++][j] = '\0';	 
 		}
 		else
 			a++;
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 
 // int	main(void)
 // {
-// 	char	s[100] = "Tripouille";
+// 	char	s[100] = "Tripouille hello world";
 // 	char	c = ' ';
 // 	int		i;
 
@@ -93,7 +93,7 @@ char	**ft_split(char const *s, char c)
 // 	char	**outcome = ft_split(s, c);
 // 	while (outcome[i])
 // 	{
-// 		printf ("%s\n",outcome[i]);
+// 		printf ("%d %s\n",i ,outcome[i]);
 // 		i++;
 // 	}
 // }

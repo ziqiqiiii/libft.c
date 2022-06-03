@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 16:56:30 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/06/02 17:50:05 by tzi-qi           ###   ########.fr       */
+/*   Created: 2022/06/02 16:47:08 by tzi-qi            #+#    #+#             */
+/*   Updated: 2022/06/02 18:53:58 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	a;
+	int	i;
 
-	a = 0;
-	while (a < n)
+	i = 0;
+	if (s == NULL)
+		return ;
+	while (s[i])
 	{
-		if (s1[a] != '\0' && (s1[a] == s2[a]))
-			a++;
-		else
-			return ((unsigned char)s1[a] - (unsigned char)s2[a]);
+		f(i, &s[i]);
+		i++;
 	}
-	return (0);
 }

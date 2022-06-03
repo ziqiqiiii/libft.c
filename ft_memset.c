@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:10:29 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/25 16:21:25 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/02 17:45:57 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memset(void *str, int c, size_t n)
 
 	i = 0;
 	a = (unsigned char *)str;
-	if (!a)
-		return (NULL);
 	while (n--)
 		a[i++] = (unsigned char)c;
 	return (a);

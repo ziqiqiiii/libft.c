@@ -6,11 +6,12 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 14:02:51 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/06/01 15:41:07 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/02 22:36:29 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	compare(char c, char *charset)
 {
@@ -26,6 +27,17 @@ static int	compare(char c, char *charset)
 	return (1);
 }
 
+static char	*ft_what_to_malloc(int start, int end)
+{
+	char	*outcome;
+
+	if (end > start)
+		outcome = ft_calloc((end - start + 2), sizeof(char));
+	else
+		outcome = ft_calloc((start - end + 2), sizeof(char));
+	return (outcome);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
@@ -33,35 +45,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*outcome;
 
 	start = 0;
-	end = (int)ft_strlen(s1) - 1;
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	while (s1[start])
-	{
-		if (compare(s1[start], (char *)set) == 0)
+	end = (int)ft_strlen(s1) - 1;
+	while (s1[start] && compare(s1[start], (char *)set) == 0)
 			start++;
-		else
-			break ;
-	}
-	while (end > 0)
-	{
-		if (compare(s1[end], (char *)set) == 0)
+	while (end > 0 && compare(s1[end], (char *)set) == 0)
 			end--;
-		else
-			break ;
-	}
-	outcome = malloc(sizeof(char) * (end - start + 1));
+	outcome = ft_what_to_malloc(start, end);
 	if (!outcome)
 		return (NULL);
 	ft_strlcpy(outcome, s1 + start, end - start + 2);
 	return (outcome);
 }
-
-// int main(void)
-// {
-// 	char	*s1 = "abbbhello, worldccaa";
-// 	char	*set = "abc";
-
-// 	printf("%s\n", ft_strtrim(s1, set));
-
-// }

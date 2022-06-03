@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 16:56:30 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/06/02 17:50:05 by tzi-qi           ###   ########.fr       */
+/*   Created: 2022/06/02 16:33:58 by tzi-qi            #+#    #+#             */
+/*   Updated: 2022/06/02 18:22:38 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	a;
+	int		i;
+	char	*outcome;
 
-	a = 0;
-	while (a < n)
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	outcome = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!outcome)
+		return (NULL);
+	while (s[i])
 	{
-		if (s1[a] != '\0' && (s1[a] == s2[a]))
-			a++;
-		else
-			return ((unsigned char)s1[a] - (unsigned char)s2[a]);
+		outcome[i] = f(i, s[i]);
+		i++;
 	}
-	return (0);
+	outcome[i] = '\0';
+	return (outcome);
 }
