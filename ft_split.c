@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:52:35 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/06/03 11:19:36 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/03 13:52:02 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**outcome;
 	int		i;
-	int		j;
 	char	*a;
 
 	if (s == NULL)
@@ -64,17 +63,14 @@ char	**ft_split(char const *s, char c)
 	outcome = malloc((number_wd(a, c) + 1) * sizeof(char *));
 	if (!outcome)
 		return (NULL);
-	outcome[0] = 0;
 	i = 0;
 	while (*a)
 	{
-		j = 0;
 		if (compare(*a, c) == 1)
 		{
-			outcome[i] = malloc(sizeof(char) * (num_char(a, c) + 1));
-			while (*a != '\0' && compare(*a, c) == 1)
-				outcome[i][j++] = *a++;
-			outcome[i++][j] = '\0';	 
+			outcome[i] = ft_substr(a, 0, num_char(a, c));
+			a += num_char(a, c);
+			i++;
 		}
 		else
 			a++;
@@ -85,15 +81,22 @@ char	**ft_split(char const *s, char c)
 
 // int	main(void)
 // {
-// 	char	s[100] = "Tripouille hello world";
-// 	char	c = ' ';
+// 	char	s[100] = "tripouille";
+// 	char	c = 0;
 // 	int		i;
+// 	char	**outcome;
 
 // 	i = 0;
-// 	char	**outcome = ft_split(s, c);
-// 	while (outcome[i])
-// 	{
-// 		printf ("%d %s\n",i ,outcome[i]);
-// 		i++;
-// 	}
+// 	outcome = ft_split("tripouille", 0);
+	// printf("WHAT: [%s]\n", outcome[1]);
+	// for (int i = 0; outcome[i] != NULL; ++i)
+	// 	free(outcome[i]);
+	// free(outcome);
+	// while (outcome[i])
+	// {
+	// 	printf ("%s\n",outcome[i]);
+	// 	printf("%zu\n", ft_strlen(outcome[i]));
+	// 	printf("i = %i\n", i);
+	// 	i++;
+	// }
 // }

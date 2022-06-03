@@ -6,7 +6,7 @@
 /*   By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:55:47 by tzi-qi            #+#    #+#             */
-/*   Updated: 2022/05/27 13:12:45 by tzi-qi           ###   ########.fr       */
+/*   Updated: 2022/06/03 11:47:45 by tzi-qi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[start] && len > 0)
 	{
 		temp[i] = ((char *)s)[start];
-		i++;
 		start++;
+		i++;
 		len--;
 	}
 	temp[i] = '\0';
 	return (temp);
 }
+
+// int	main(void)
+// {
+// 	char *a = "hello world";
+
+// 	printf("%s\n", ft_substr(a, start, ))
+
+// }
