@@ -1,26 +1,68 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/06 13:35:06 by tzi-qi            #+#    #+#              #
+#    Updated: 2022/06/06 13:35:14 by tzi-qi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
-SRCS = $(addprefix ./, ${wildcard *.c})
-#$(addprefix ./srcs/, ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_swap.c)
+# MANDATORY
+SRC_DIR = ./
+SRC = $(addprefix $(SRC_DIR)ft_, $(addsuffix .c, \
+		isalpha isdigit isalnum isascii isprint toupper tolower \
+		memset memcpy memmove memchr memcmp atoi bzero calloc\
+		strlen strlcpy strlcat strncmp strchr strrchr strnstr strdup \
+		substr strjoin strtrim split itoa strmapi striteri \
+		putchar_fd putstr_fd putendl_fd putnbr_fd))
+OBJ = $(SRC:%.c=%.o)
 
-OBJ = $(SRCS:%.c=%.o)
+# BONUS
+B_SRC = $(addprefix $(SRC_DIR)ft_, $(addsuffix .c, \
+		lstnew lstadd_front lstsize lstlast lstadd_back lstdelone \
+		lstclear lstiter lstmap))
+B_OBJ = $(B_SRC:%.c=%.o)
 
-LIBS = ar -rcs
+# HEADER
+INC = ./
+HEAD = -I $(INC)
 
+# COMPILER
+#-L ../libft -l ft<-- make the lib file dir able to be accessed anywhere
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAG = -Wall -Werror -Wextra $(HEAD)
 
-INCL = -I ./
+# LIBRARY
+LIBCR = ar -rcs
 
-all: $(OBJ)
-	$(LIBS) $(NAME) $(OBJ)
-# %.o: %.c
-# 	$(CC) -c $< -o $@ $(INCL)
+# REMOVE FILES
+RM = rm -f
 
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(LIBCR) $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+bonus: $(B_OBJ)
+	$(LIBCR) $(NAME) $(B_OBJ)
+	
 clean:
-	rm -rf $(OBJ)
+	$(RM) $(OBJ) ${B_OBJ}
 
 fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
+norme:
+	norminette -R CheckForbiddenSourceHeader $(SRC) $(B_SRC) ./libft.h
+
+.PHONY: all clean fclean re norme bonus
