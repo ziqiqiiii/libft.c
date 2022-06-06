@@ -6,7 +6,7 @@
 #    By: tzi-qi <tzi-qi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 13:35:06 by tzi-qi            #+#    #+#              #
-#    Updated: 2022/06/06 13:35:14 by tzi-qi           ###   ########.fr        #
+#    Updated: 2022/06/06 13:57:45 by tzi-qi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ HEAD = -I $(INC)
 # COMPILER
 #-L ../libft -l ft<-- make the lib file dir able to be accessed anywhere
 CC = gcc
-CFLAG = -Wall -Werror -Wextra $(HEAD)
+CFLAGS = -Wall -Werror -Wextra $(HEAD)
 
 # LIBRARY
 LIBCR = ar -rcs
@@ -48,8 +48,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(LIBCR) $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC) -c $< -o $@
+# %.o: %.c
+# 	$(CC) $(CFLAG) -c $< -o $@
 
 bonus: $(B_OBJ)
 	$(LIBCR) $(NAME) $(B_OBJ)
